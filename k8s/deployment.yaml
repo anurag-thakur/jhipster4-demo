@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jhipster4-demo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: jhipster4-demo
+    spec:
+      containers:
+        - name: jhipster4-demo
+          image: "jhipster4-demo:latest"
+          imagePullPolicy: Always

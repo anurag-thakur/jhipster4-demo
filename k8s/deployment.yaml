@@ -13,6 +13,11 @@ spec:
         - name: jhipster4-demo
           image: "jhipster4-demo:latest"
           imagePullPolicy: Always
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+              initialDelaySeconds: 3
+              periodSeconds: 5
           env:
           - name: DB_USER
             valueFrom:

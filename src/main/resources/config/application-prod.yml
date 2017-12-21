@@ -22,7 +22,7 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         #url: jdbc:postgresql://35.184.215.86:5432/blog
-        url: jdbc:postgresql://127.0.0.1:5432/blog
+        url: jdbc:postgresql://127.0.0.1:3306/blog
         username: postgres
         password: password
     jpa:

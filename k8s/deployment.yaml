@@ -16,8 +16,9 @@ spec:
           readinessProbe:
             tcpSocket:
               port: 8080
-              initialDelaySeconds: 3
-              periodSeconds: 5
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            timeoutSeconds: 10
           env:
           - name: DB_USER
             valueFrom:

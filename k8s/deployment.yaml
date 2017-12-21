@@ -13,3 +13,21 @@ spec:
         - name: jhipster4-demo
           image: "jhipster4-demo:latest"
           imagePullPolicy: Always
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:latest       
+          command: ["/cloud_sql_proxy", "--dir=/cloudsql",
+                  "-instances=cicd-k8s:us-central1:blog=tcp:3306",
+                  "-credential_file=/secrets/cloudsql/credentials.json"]
+          volumeMounts:
+          - name: cloudsql-oauth-credentials
+            mountPath: /secrets/cloudsql
+            readOnly: true
+          - name: ssl-certs
+            mountPath: /etc/ssl/certs
+      volumes:
+        - name: cloudsql-oauth-credentials
+          secret:
+            secretName: cloudsql-oauth-credentials
+        - name: ssl-certs
+          hostPath:
+            path: /etc/ssl/certs
